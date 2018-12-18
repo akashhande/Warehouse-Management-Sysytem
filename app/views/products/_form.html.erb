@@ -1,0 +1,79 @@
+<!-- Below code uses bootstrap SB Admin 2 admin theme -->
+<%= form_with(model: product, local: true) do |form| %>
+<% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div id="page-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">Products</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                Add new product
+              </div>
+              <div class="panel-body">
+              <form role="form">
+                            <div class="form-group col-sm-6">
+                            <%= form.label :source_id %>
+                            <%= collection_select :product, :source_id, Source.all, :id, :source_name, { :prompt => "Select" }, { "style" => "width: 100%; height: 34px; padding: 6px 12px; border: 1px solid #ccc; background-color: #fff; color: #555; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0,0,0,.075);", required: true } %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :category_id %>
+                            <%= collection_select :product, :category_id, Category.all, :id, :category_name, { :prompt => "Select" }, { "style" => "width: 100%; height: 34px; padding: 6px 12px; border: 1px solid #ccc; background-color: #fff; color: #555; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0,0,0,.075);", required: true } %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :company_id %>
+                            <%= collection_select :product, :company_id, Company.all, :id, :company_name, { :prompt => "Select" }, { "style" => "width: 100%; height: 34px; padding: 6px 12px; border: 1px solid #ccc; background-color: #fff; color: #555; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0,0,0,.075);", required: true } %>
+                          </div>
+
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :product_name %>
+                            <%= form.text_field :product_name, class: 'form-control', id: :product_product_name, required: true %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :brand %>
+                            <%= form.text_field :brand, class: 'form-control', id: :product_brand %>
+                          </div>
+                          <div class="form-group col-sm-6">
+                            <%= form.label :product_quantity %>
+                            <%= form.text_field :product_quantity, class: 'form-control', id: :product_product_quantity, required: true %>
+                          </div>
+                          <div class="form-group col-sm-6">
+                            <%= form.label :purchase_price %>
+                            <%= form.text_field :purchase_price, class: 'form-control', id: :product_purchase_price %>
+                          </div>
+                          <div class="form-group col-sm-6">
+                            <%= form.label :sale_price %>
+                            <%= form.text_field :sale_price, class: 'form-control', id: :product_sale_price %>
+                          </div>
+                        </form> 
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-md-10"></div>
+                            <div class="col-md-2">
+                                <%= link_to 'Back', products_path, class: 'btn btn-outline btn-default' %>
+                                <button class="btn btn-outline btn-primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+<% end %>

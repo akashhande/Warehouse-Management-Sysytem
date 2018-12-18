@@ -1,0 +1,56 @@
+<%= form_with(model: profile, local: true) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+      <ul>
+      <% profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="login-panel panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Editing Profile</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form">
+            <fieldset>
+              <div class="form-group">
+                <div class="field">
+					        <%= form.text_field :firstname, class: 'form-control', placeholder: 'First Name', id: :profile_firstname %>
+                </div>
+              </div>
+			         <div class="form-group">
+                <div class="field">
+                  <%= form.text_field :lastname, class: 'form-control', placeholder: 'Last Name', id: :profile_lastname %>
+                </div>
+              </div>
+			        <div class="form-group">
+                <div class="field">
+					          <%= form.text_field :address, class: 'form-control', placeholder: 'Address', id: :profile_address %>
+                </div>
+              </div>
+			        <div class="form-group">
+                <div class="field">
+					          <%= form.text_field :user_id, class: 'form-control', placeholder: 'User Id', id: :profile_user_id %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="field">
+				          <%= collection_select :user, :company_id, Company.all, :id, :company_name, { :prompt =>"Select" } %>
+                </div>
+              </div>
+            <%= form.submit 'Sign up', class: 'btn btn-primary btn-block' %>
+            <%= link_to 'Back', profiles_path, class: 'btn btn-danger btn-block' %>
+          </fieldset>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,210 @@
+<!-- Below code uses bootstrap SB Admin 2 admin theme -->
+<%= form_with(:controller=>"dashboard", :action=>"Prediction", :method=>"get", local: true) do |form| %>
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dashboard</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <% unless current_user.admin? %>
+                                    <i class="fa fa-truck fa-5x"></i>
+                                    <% end %>
+                                    <% if current_user.admin? %>
+                                    <i class="fa fa-cubes fa-5x"></i>
+                                    <% end %>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <% unless current_user.admin? %>
+                                    <div class="huge"><%= @order_in_count %></div>
+                                    <div>New Orders!</div>
+                                    <% end %>
+                                    <% if current_user.admin? %>
+                                        <div class="huge"><%= @product_count %></div>
+                                        <div>Total Products!</div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                        <% unless current_user.admin? %>
+                            <a href="/order_ins">
+                        <% end %>
+                        <% if current_user.admin? %>
+                            <a href="/products">
+                        <% end %>
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <% unless current_user.admin? %>
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                    <% end %>
+                                    <% if current_user.admin? %>
+                                    <i class="glyphicon glyphicon-tags fa-5x"></i>
+                                    <% end %>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <% unless current_user.admin? %>
+                                        <div class="huge"><%= @order_out_count %></div>
+                                        <div>Outgoing Orders!</div>
+                                    <% end %>
+                                    <% if current_user.admin? %>
+                                        <div class="huge"><%= @source_count %></div>
+                                        <div>Total Sources!</div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                        <% unless current_user.admin? %>
+                            <a href="/order_outs">
+                        <% end %>
+                        <% if current_user.admin? %>
+                            <a href="/sources">
+                        <% end %>
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <% unless current_user.admin? %>
+                                        <div class="huge"><%= @expected_delivery_count %></div>
+                                        <div>Tomorrows Delivery!</div>
+                                     <% end %>
+                                    <% if current_user.admin? %>
+                                        <div class="huge"><%= @category_count %></div>
+                                        <div>Total Categories!</div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                        <% unless current_user.admin? %>
+                            <a href="#">
+                        <% end %>
+                        <% if current_user.admin? %>
+                            <a href="/categories">
+                        <% end %>
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <% unless current_user.admin? %>
+                                        <div class="huge"><%= @performanance_of_the_day %></div>
+                                        <div>Daily Perofrmanance!</div>
+                                     <% end %>
+                                    <% if current_user.admin? %>
+                                        <div class="huge"><%= @logged_in_users %></div>
+                                        <div>Total Users!</div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                        <% unless current_user.admin? %>
+                            <a href="#">
+                        <% end %>
+                        <% if current_user.admin? %>
+                            <a href="/profiles">
+                        <% end %>
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <% if current_user.admin? %>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-tasks"></i>   Predictions
+                        </div>
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="panel-body">
+                                    <div class="form-group col-sm-6">
+                                        <%= collection_select :dashboard, :product_id, Product.all, :id, :product_name, { :prompt => "Select Product" }, { "style" => "width: 100%; height: 34px; padding: 6px 12px; border: 1px solid #ccc; background-color: #fff; color: #555; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0,0,0,.075);", required: true } %>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <%= form.hidden_field :product_selected, id: :product_selected, value: false %>
+                                        <button type="submit" class="btn btn-primary btn-circle"><i class="fa fa-check"></i></button>
+                                        <!--<%= submit_tag("Click") %>-->
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="myfirstchart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="glyphicon glyphicon-stats"></i>     Warehouse Statics
+                        </div>
+                        <div class="panel-body">
+                            <div id="barchartexample"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <% end %>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+  new Morris.Bar({
+  element: 'barchartexample',
+  data: [
+    { y: 'Warehouse 1', a: gon.WH1_order_in_mar_count, b: gon.WH1_order_out_mar_count },
+    { y: 'Warehouse 2', a: gon.WH2_order_in_mar_count, b: gon.WH2_order_out_mar_count },
+    { y: 'Warehouse 3', a: gon.WH3_order_in_mar_count, b: gon.WH3_order_out_mar_count }
+  ],
+  xkey: 'y',
+  ykeys: ['a', 'b'],
+  labels: ['Incoming Orders', 'Outgoing Orders']
+});
+});
+</script>
+
+<% end %>

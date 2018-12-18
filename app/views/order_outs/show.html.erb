@@ -1,0 +1,83 @@
+<!-- Below code uses bootstrap SB Admin 2 admin theme -->
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Outgoing materials</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          Basic Form Elements
+        </div>
+        <div class="panel-body">
+          <form role="form">
+             <div class="form-group col-sm-6">
+              <strong>Product:</strong>
+              <%= @order_out.product.product_name %>
+            </div>
+            
+            <div class="form-group col-sm-6">
+              <strong>Company:</strong>
+              <%= @order_out.company.company_name %>
+            </div>
+            
+            <div class="form-group col-sm-6">
+              <strong>Source:</strong>
+              <%= @order_out.source.source_name %>
+            </div>
+
+            <div class="form-group col-sm-6">
+              <strong>Product quantity:</strong>
+              <%= @order_out.product_quantity %>
+            </div>
+
+            <div class="form-group col-sm-6">
+              <strong>Customer name:</strong>
+              <%= @order_out.customer_name %>           
+            </div>
+             
+            <div class="form-group col-sm-6">
+              <strong>Order date:</strong>
+                <%= @order_out.order_date %>
+            </div>
+              
+            <div class="form-group col-sm-6">
+              <strong>Orderer name:</strong>
+                <%= @order_out.orderer_name %>
+            </div>
+
+            <div class="form-group col-sm-6">
+              <strong>Delivery address:</strong>
+              <%= @order_out.delivery_address %>
+            </div>
+            
+            <div class="form-group col-sm-6">
+              <strong>Delivery address city:</strong>
+                <%= @order_out.delivery_address_city %>
+            </div>
+
+            <div class="form-group col-sm-6">
+               <strong>Delivery address country:</strong>
+               <%= @order_out.delivery_address_country %>
+            </div>
+
+            <div class="form-group col-sm-6">
+              <strong>Delivery address zip:</strong>
+                <%= @order_out.delivery_address_zip %>
+            </div>
+            
+          </form> 
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+              <%= link_to 'Back', order_outs_path, class: 'btn btn-outline btn-default' %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

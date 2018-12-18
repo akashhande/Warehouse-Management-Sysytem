@@ -1,0 +1,112 @@
+<!-- Below code uses bootstrap SB Admin 2 admin theme -->
+<%= form_with(model: order_out, local: true) do |form| %>
+  <% if order_out.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order_out.errors.count, "error") %> prohibited this order_out from being saved:</h2>
+
+      <ul>
+      <% order_out.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div id="page-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">Outgoing orders</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                New order for Delivery
+              </div>
+              <div class="panel-body">
+              <form role="form">
+                          <div class="form-group col-sm-6">
+                            <%= form.label :product_name %>
+                            <%= collection_select :order_out, :product_id, Product.all, :id, :product_name, { :prompt => "Select" }, { "style" => "width: 100%; height: 34px; padding: 6px 12px; border: 1px solid #ccc; background-color: #fff; color: #555; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0,0,0,.075);", required: true } %>
+                          </div>
+                          <div class="form-group col-sm-6">
+                            <%= form.label :source %>
+                              <%= collection_select :order_out, :source_id, Source.all, :id, :source_name, { :prompt => "Select" }, { "style" => "width: 100%; height: 34px; padding: 6px 12px; border: 1px solid #ccc; background-color: #fff; color: #555; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0,0,0,.075);", required: true } %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :product_quantity %>
+                            <%= form.number_field :product_quantity, class: 'form-control', id: :order_out_product_quantity, required: true %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :customer_name %>
+                            <%= form.text_field :customer_name, class: 'form-control', id: :order_out_customer_name, required: true %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :order_date %>
+                            <%= form.date_select :order_date, class: 'form-control', id: :order_out_order_date %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :orderer_name %>
+                            <%= form.text_field :orderer_name, class: 'form-control', id: :order_out_orderer_name %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :delivery_address %>
+                            <%= form.text_field :delivery_address, class: 'form-control', id: :order_out_delivery_address, required: true %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :delivery_address_city %>
+                            <%= form.select :delivery_address_city, [['Select',''],['Dublin','Dublin'],['Galway','Galway'],['Limric','Limric']], {}, {:class => 'form-control'} %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :delivery_address_country %>
+                            <%= form.text_field :delivery_address_country, class: 'form-control', id: :order_out_delivery_address_country %>
+                          </div>
+
+                          <div class="form-group col-sm-6">
+                            <%= form.label :delivery_address_zip %>
+                            <%= form.select :delivery_address_zip, [], {}, {:class => 'form-control'} %>
+                          </div>
+                          <%= form.hidden_field :company_id, id: :company_id, value: "#{current_user.company_id.to_i}" %>
+              
+                        </form> 
+                        
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                        <div class="col-md-10"></div>
+                        <div class="col-md-2">
+                            <%= link_to 'Back', order_outs_path, class: 'btn btn-outline btn-default' %>
+                            <button class="btn btn-outline btn-primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+<% end %>
+<script>
+    $('[name="order_out[delivery_address_city]"]').on('change', function(){
+    $('[name="order_out[delivery_address_zip]"]').html('');
+        var selectedValue = this.value;
+        $.ajax({
+            type:"GET",
+            url: '/',
+            dataType:"json",
+            data: {selectedValue : selectedValue},
+            success: function (result) {
+                $.each(result, function(key, value) {   
+                   $('[name="order_out[delivery_address_zip]"]').append($("<option></option>").attr("value",key+1).text(value)); 
+                });
+             }
+          })
+    return false;
+  });
+</script>

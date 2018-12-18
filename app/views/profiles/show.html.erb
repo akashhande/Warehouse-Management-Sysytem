@@ -1,0 +1,43 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">User Profile</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          Basic Form Elements
+        </div>
+        <div class="panel-body">
+          <form role="form">
+             <div class="form-group col-sm-6">
+              <strong>First name:</strong>
+                  <%= @profile.firstname %>
+              </div>
+              <div class="form-group col-sm-6">
+               <strong>Last name:</strong>
+                 <%= @profile.lastname %>
+              </div>
+              <div class="form-group col-sm-6">
+                <strong>Address:</strong>
+                  <%= @profile.address %>
+              </div>
+              <div class="form-group col-sm-6">
+                <strong>User:</strong>
+                  <%= @profile.user %>
+              </div>
+          </form> 
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+              <%= link_to 'Back', profiles_path, class: 'btn btn-outline btn-default' %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

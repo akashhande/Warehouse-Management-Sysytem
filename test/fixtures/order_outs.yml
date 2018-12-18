@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: one
+  company: MyString
+  source: one
+  product_quantity: 1
+  customer_name: MyString
+  order_date: 2018-03-19
+  orderer_name: MyString
+  delivery_address: MyString
+  delivery_address_city: MyString
+  delivery_address_country: MyString
+  delivery_address_zip: MyString
+
+two:
+  product: two
+  company: MyString
+  source: two
+  product_quantity: 1
+  customer_name: MyString
+  order_date: 2018-03-19
+  orderer_name: MyString
+  delivery_address: MyString
+  delivery_address_city: MyString
+  delivery_address_country: MyString
+  delivery_address_zip: MyString

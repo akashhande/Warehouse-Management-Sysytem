@@ -1,0 +1,17 @@
+2018-04-25 20:52:13 +0000     generate_daily_report -> generateDailyReport - Creating dynamic table for PDF report
+2018-04-25 20:52:13 +0000     generate_daily_report -> line_items - Creating table PDF
+2018-04-25 20:52:13 +0000     generate_daily_report -> createBasicPdf - Creating basic PDF
+2018-04-25 20:56:44 +0000     GenerateInventoryReport -> generateInventoryOnHand - Creating dynamic table for PDF report
+2018-04-25 20:56:44 +0000     GenerateInventoryReport -> line_items - Creating table for PDF
+2018-04-25 20:56:44 +0000     GenerateInventoryReport -> createBasicPdf - Creating basic PDF
+2018-04-25 20:56:49 +0000     generate_daily_report -> generateDailyReport - Creating dynamic table for PDF report
+2018-04-25 20:56:49 +0000     generate_daily_report -> line_items - Creating table PDF
+2018-04-25 20:56:49 +0000     generate_daily_report -> createBasicPdf - Creating basic PDF
+2018-04-25 20:56:53 +0000     GenerateShortageReport -> generateShortageOnHand - Creating dynamic table for PDF report
+2018-04-25 20:56:53 +0000     GenerateShortageReport -> line_items - Creating table for PDF
+2018-04-25 20:56:53 +0000     GenerateShortageReport -> createBasicPdf - Creating basic PDF
+2018-04-25 20:57:47 +0000  order_out_observer -> transaction sucessfull 
+2018-04-25 21:17:18 +0000     reports_controller -> GenerateReports -> Generating Inventory on Hand
+2018-04-25 21:17:18 +0000     GenerateInventoryReport -> generateInventoryOnHand - Creating dynamic table for PDF report
+2018-04-25 21:17:19 +0000     GenerateInventoryReport -> line_items - Creating table for PDF
+2018-04-25 21:17:19 +0000     GenerateInventoryReport -> createBasicPdf - Creating basic PDF
